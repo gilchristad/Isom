@@ -4,8 +4,8 @@ map = []
 randomints = []
 
 #Generate random number of tiles: the length of the array is how many rows, each number in each index is the number of tiles for that row
-for t in range(random.randint(7,15)):
- 		randomints.append(random.randint(2,12))
+for t in range(random.randint(15,25)):
+ 		randomints.append(random.randint(7,20))
 print(randomints)
 print(len(randomints))
 
@@ -32,7 +32,6 @@ for i in range(0,30):
 		t += 1
 		
 	map.append(row)
-	f.write(str(row) + "\n")
 
 j = 1
 for i in range(30,59):
@@ -55,4 +54,4 @@ for i in range(30,59):
 	if flag == 1:
 		t += 1
 	map.append(row)
-	f.write(str(row) + "\n")
+f.write(str(map))
