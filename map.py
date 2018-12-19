@@ -1,4 +1,5 @@
 import pygame 
+from random import randint
 from pygame.locals import *
 
 class Rectangle:
@@ -31,10 +32,14 @@ class Map:
 		for i in range(59):
 			if (i%2) == 0:
 				for j in range(30):
-					screen.blit(self.tile.file, ((j*64),(i*16)))
+					x_rand = randint(0, 7)
+					y_rand = randint(0, 2)
+					screen.blit(self.tile.file, ((j*64),(i*16)), (x_rand*64, y_rand*32, 64, 32))
 			else:
 				for j in range(29):
-					screen.blit(self.tile.file, ((j*64)+32,(i*16)))
+					x_rand = randint(0, 7)
+					y_rand = randint(0, 2)
+					screen.blit(self.tile.file, ((j*64)+32,(i*16)), (x_rand*64, y_rand*32, 64, 32))
 		
 		pygame.image.save(screen, 'background.png')
 		
@@ -154,13 +159,14 @@ class Player:
 			self.x = 30
 		elif self.x >= 1890:
 			self.x = 1890
-		if self.y <= 5:
-			self.y = 5
+		if self.y <= 18:
+			self.y = 18
 		elif self.y >= 930:
 			self.y = 930
 			
 		#As it says updates the direction the sprite should be facing	
 		self.update_direction()
+		
 		#We always update the player on the screen
 		self.draw_player(screen, x_view, y_view)
 		

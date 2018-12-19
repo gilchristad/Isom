@@ -55,7 +55,7 @@ screen.fill(white)
 
 #Pulling in the sprites and sprite sheets
 isom_small_tile = pygame.image.load('Tiles/32x16/sample.png')
-isom_medium_tile = pygame.image.load('Tiles/64x32/sample.png')
+isom_medium_tile = pygame.image.load('Tiles/64x32/Tile-Sheet.png')
 player_sample = pygame.image.load('Player/playerSheet.png')
 
 new_tile = map.Tile(isom_medium_tile)
