@@ -19,7 +19,7 @@ for i in range(0,30):
 		if x == 0 or x == (length - 1):
 			row.append("/")
 		elif i >= (30 - (len(randomints)/2)) and t < len(randomints):
-			if x <= (round(length-1)/2) - round(randomints[t]/2):
+			if x <= (round(length-1)/2) - round(randomints[t]/2) - 1:
 				row.append("*")
 			elif x >= (round(length-1)/2) + round(randomints[t]/2):
 				row.append("*")
@@ -43,7 +43,7 @@ for i in range(30,59):
 		if x == 0 or x == (length - 1):
 			row.append("/")
 		elif i <= (31 + (round(len(randomints)/2) -2)) and t < len(randomints):
-			if x <= (round(length-1)/2) - round(randomints[t]/2):
+			if x <= (round(length-1)/2) - round(randomints[t]/2) -1:
 				row.append("*")
 			elif x >= (round(length-1)/2) + round(randomints[t]/2):
 				row.append("*")
