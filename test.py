@@ -1,5 +1,6 @@
 import pygame
 import map
+import mapgen
 
 from pygame.locals import *
 
