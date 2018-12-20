@@ -2,13 +2,16 @@ import random
 
 map = []
 randomints = []
+randomoffset = []
 
 #Generate random number of tiles: the length of the array is how many rows, each number in each index is the number of tiles for that row
 for t in range(random.randint(15,25)):
  		randomints.append(random.randint(7,20))
+ 		randomoffset.append(random.randint(1,5))
+
 print(randomints)
 print(len(randomints))
-
+print(randomoffset)
 
 
 def map_gen():
@@ -22,7 +25,7 @@ def map_gen():
 			if x == 0 or x == (length - 1):
 				row.append("/")
 			elif i >= (30 - (len(randomints)/2)) and t < len(randomints):
-				if x <= (round(length-1)/2) - round(randomints[t]/2) - 1:
+				if x <= (round(length-1)/2) - (round(randomints[t]/2) - 1) - randomoffset[t]:
 					row.append("*")
 				elif x >= (round(length-1)/2) + round(randomints[t]/2):
 					row.append("*")
@@ -45,9 +48,9 @@ def map_gen():
 			if x == 0 or x == (length - 1):
 				row.append("/")
 			elif i <= (31 + (round(len(randomints)/2) -2)) and t < len(randomints):
-				if x <= (round(length-1)/2) - round(randomints[t]/2) -1:
+				if x <= (round(length-1)/2) - (round(randomints[t]/2) -1)  - randomoffset[t]:
 					row.append("*")
-				elif x >= (round(length-1)/2) + round(randomints[t]/2):
+				elif x >= (round(length-1)/2) + round(randomints[t]/2) + randomoffset[t]/2:
 					row.append("*")
 				else:
 					row.append("&")
