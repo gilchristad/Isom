@@ -5,4 +5,5 @@ Land Sea and Air Burger McDonald's Secret Menu
 
 1. Install Python 3.7 
 1. Install pygame with `pip install pygame`
-1. Run `python test.py`
+1. Install pyglet with `pip install pyglet`
+1. Run `python main.py`
