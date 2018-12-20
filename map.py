@@ -1,5 +1,9 @@
 import pygame 
 from mapgen import map_gen
+from tile import Tile
+from player import Player
+from camera import Camera
+
 from random import randint
 from pygame.locals import *
 
