@@ -3,6 +3,10 @@ from pygame.locals import *
 
 from rectangle import Rectangle
 
+new_surface = pygame.Surface([23, 32], pygame.SRCALPHA)
+end_surface = pygame.Surface([46, 64], pygame.SRCALPHA)
+black = (0, 0, 0, 0)
+
 class Player:
 	def __init__(self, width, height, file):
 		self.width = width
@@ -12,15 +16,19 @@ class Player:
 		self.y = 50
 		self.x_velocity = 0
 		self.y_velocity = 0
-		self.friction = 0.9
+		self.friction = 0.8
 		self.frames = 8
 		self.ticks = 20
 		self.tick_count = 0
 		self.x_frame = 0
 		self.y_frame = 0
 		
+	#Quick scaling trick to make things seem 2x as big will become a nightmare for rendering
 	def draw_player(self, screen, x_view, y_view):
-		screen.blit(self.file, (((self.x - self.width/2) - x_view), ((self.y - self.height/2) - y_view)), (self.x_frame*self.width, self.y_frame*self.height, self.width, self.height))
+		new_surface.fill((0, 0, 0, 0))
+		new_surface.blit(self.file, (0, 0), (self.x_frame*self.width, self.y_frame*self.height, self.width, self.height))
+		pygame.transform.scale2x(new_surface, end_surface)
+		screen.blit(end_surface, (((self.x - self.width/2) - x_view), ((self.y - self.height/2) - y_view)))
 		
 	def update_direction(self):
 		if self.x_velocity == 0 and self.y_velocity == 0:
@@ -58,16 +66,16 @@ class Player:
 		#Diagonal slope
 		if keys[K_w] and keys[K_a]:
 			self.x_velocity -= 1
-			self.y_velocity -= 0.5
+			self.y_velocity -= 0.6666666
 		elif keys[K_w] and keys[K_d]:
 			self.x_velocity += 1
-			self.y_velocity -= 0.5
+			self.y_velocity -= 0.6666666
 		elif keys[K_s] and keys[K_a]:
 			self.x_velocity -= 1
-			self.y_velocity += 0.5
+			self.y_velocity += 0.6666666
 		elif keys[K_s] and keys[K_d]:
 			self.x_velocity += 1
-			self.y_velocity += 0.5
+			self.y_velocity += 0.666666
 			
 		#Incrementing the velocities based on friction
 		self.x_velocity *= self.friction
@@ -96,14 +104,14 @@ class Player:
 		#bounds 
 		if self.x <= 30:
 			self.x = 30
-		elif self.x >= 1890:
-			self.x = 1890
+		elif self.x >= 2340:
+			self.x = 2340
 		if self.y <= 18:
 			self.y = 18
-		elif self.y >= 930:
-			self.y = 930
+		elif self.y >= 1220:
+			self.y = 1220
 			
-		#As it says updates the direction the sprite should be facing	
+		#Updates the direction the sprite should be facing	
 		self.update_direction()
 		
 		#We always update the player on the screen
