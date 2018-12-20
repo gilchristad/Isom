@@ -95,22 +95,6 @@ class Map:
 						x_counter += 1
 						y_counter -= 1
 					
-							
-				#else:
-				#	screen.blit(self.tile.file, ((j*32),(i*16) + 16), (0*64, 0*32, 64, 32))
-				
-		#for i in range(59):
-		#	if (i%2) == 0:
-		#		for j in range(30):
-		#			x_rand = randint(0, 7)
-		#			y_rand = randint(0, 2)
-		#			screen.blit(self.tile.file, ((j*64),(i*16)), (x_rand*64, y_rand*32, 64, 32))
-		#	else:
-		#		for j in range(29):
-		#			x_rand = randint(0, 7)
-		#			y_rand = randint(0, 2)
-		#			screen.blit(self.tile.file, ((j*64)+32,(i*16)), (x_rand*64, y_rand*32, 64, 32))
-		
 		pygame.image.save(screen, 'background.png')
 		
 	#This is currently drawing our scrolling viewport
