@@ -6,12 +6,12 @@ class Camera:
 		self.x_view = x_view or 0
 		self.y_view = y_view or 0
 		self.w_view = screen_width
-		self.h_view = screen_height
+		self.h_view = screen_height 
 		self.x_dead_zone = 0
 		self.y_dead_zone = 0
 		self.followed = None
 		self.viewport = Rectangle(self.x_view, self.y_view, screen_width, screen_height)
-		self.map = Rectangle(0, 0, map_width, map_height)
+		self.map = Rectangle(0, 0, 2400, 1280)
 		
 	#Designates the target in which the viewport will use as reference
 	def follow(self, player, x_dead_zone, y_dead_zone):
@@ -36,7 +36,7 @@ class Camera:
 				
 		#Our viewport is a rectangle so the hit box needs to be updated constantly
 		self.viewport.set(self.x_view, self.y_view)
-		
+
 		#This checks bounds on the the current position of the viewport and stops increments to the x and y values of the viewport
 		if not self.viewport.within(self.map):
 			if self.viewport.left < self.map.left:
